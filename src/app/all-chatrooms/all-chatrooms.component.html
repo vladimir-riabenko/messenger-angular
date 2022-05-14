@@ -1,0 +1,19 @@
+<h2>Chats:</h2>
+<mat-selection-list *ngIf="allChatrooms" [multiple]="false">
+  <mat-list-option *ngFor="let chat of allChatrooms" [routerLink]="['/chat', chat.id]">
+    <div class="chat-item">
+      <div class="avatar">
+        <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+          <style>
+            .heavy { font: bold 30px sans-serif; }
+          </style>
+          <text x="0" y="35" class="heavy">{{ chat.topic.charAt(0).toUpperCase() }}</text>
+        </svg>
+      </div>
+      <div class="chat-info">
+        <p class="topic">{{ chat.topic }}</p>
+        <span class="members">{{ chat.users.$values.length == 1 ? '1 member' : chat.users.$values.length + ' members' }}</span>
+      </div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>

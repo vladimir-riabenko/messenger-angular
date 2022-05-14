@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <h1>Create Chatroom</h1>
+  <mat-form-field appearance="fill">
+    <mat-label>Topic</mat-label>
+    <input matInput [(ngModel)]="chatCreateModel.topic" placeholder="Topic" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit" (click)="CreateChatroom(chatCreateModel)">Create</button>
+</div>

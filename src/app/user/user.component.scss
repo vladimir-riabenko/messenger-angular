@@ -1,0 +1,51 @@
+.user-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+
+  .avatar {
+    margin: 0 10px 0 0;
+  }
+
+  a {
+    color: #e4e4e4;
+    display: block;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .user-info {
+    max-width: 136px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  p {
+    margin: 0;
+
+    &.username {
+      font-size: 18px;
+      color: #ffffff;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    &.email {
+      font-size: 12px;
+      color: #8b8da9;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  }
+
+  .actions {
+    margin-left: auto;
+    display: flex;
+    a:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+}

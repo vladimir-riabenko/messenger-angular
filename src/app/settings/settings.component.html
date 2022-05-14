@@ -1,0 +1,44 @@
+<div class="settings-wrapper">
+  <a (click)="closeDialog()" class="close"><mat-icon>close</mat-icon></a>
+  <div *ngIf="!changePasswordForm" class="reg-form-wrapper">
+    <h1>Edit profile</h1>
+    <form>
+      <mat-form-field hintLabel="Max 25 characters" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput #input maxlength="25" [formControl]="username" placeholder="Username" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/25</mat-hint>
+        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="UpdateUser()">Save changes</button>
+      <a class="form-redirection" (click)="changePasswordForm = true">Change password</a>
+    </form>
+  </div>
+  <div *ngIf="changePasswordForm" class="reg-form-wrapper">
+    <h1>Change password</h1>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Old Password</mat-label>
+        <input matInput [type]="hideOld ? 'password' : 'text'" [formControl]="oldPassword" required>
+        <button mat-icon-button matSuffix (click)="hideOld = !hideOld" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideOld">
+          <mat-icon>{{hideOld ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="oldPassword.invalid">{{getOldPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" hintLabel="Min 8 characters">
+        <mat-label>New password</mat-label>
+        <input matInput [type]="hideNew ? 'password' : 'text'" [formControl]="newPassword" required>
+        <button mat-icon-button matSuffix (click)="hideNew = !hideNew" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideNew">
+          <mat-icon>{{hideNew ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="newPassword.invalid">{{getNewPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="ChangePassword()">Change password</button>
+      <a class="form-redirection" (click)="changePasswordForm = false">Back</a>
+    </form>
+  </div>
+</div>

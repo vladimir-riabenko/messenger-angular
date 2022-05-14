@@ -1,0 +1,14 @@
+<div class="settings-wrapper">
+  <a (click)="closeDialog()" class="close"><mat-icon>close</mat-icon></a>
+  <div class="reg-form-wrapper">
+    <h1>Edit message</h1>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Edit message</mat-label>
+        <input matInput #input maxlength="25" [formControl]="messageText" placeholder="Edit message" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="EditMessage()">Save changes</button>
+      <a class="form-redirection" (click)="DeleteMessage(data.id)" style="color: red">Delete message</a>
+    </form>
+  </div>
+</div>

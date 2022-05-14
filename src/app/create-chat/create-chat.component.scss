@@ -1,0 +1,14 @@
+$bg : #ebeafd;
+$purple : #673ab7;
+$darkPurple : #3a1f68;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+    color: $purple;
+  }
+}

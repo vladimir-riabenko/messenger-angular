@@ -1,0 +1,20 @@
+<div *ngIf="currentUser" class="user-wrapper">
+  <div class="avatar">
+    <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+      <style>
+        .heavy { font: bold 30px sans-serif; }
+      </style>
+      <text x="0" y="35" class="heavy">{{ currentUser.userName.charAt(0).toUpperCase() }}</text>
+    </svg>
+  </div>
+  <div class="user-info">
+    <p class="username">{{ currentUser.userName }}</p>
+    <p class="email">{{ currentUser.email }}</p>
+  </div>
+  <div class="actions">
+    <a (click)="openDialogFriends()" ><mat-icon>group</mat-icon></a>
+    <a (click)="openDialogSettings()"><mat-icon>edit</mat-icon></a>
+    <a (click)="Logout()"><mat-icon>exit_to_app</mat-icon></a>
+  </div>
+</div>
+<button mat-stroked-button class="white-stroked" (click)="openDialogCreateChatroom()">Create Chatroom</button>

@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+$bg : #ebeafd;
+$purple : #673ab7;
+$darkPurple : #3a1f68;
+
+html {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $bg;
+}
+
+.reg-form-wrapper {
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+  padding: 25px 50px;
+  position: relative;
+  background-color: #ffffff;
+
+  mat-form-field {
+    width: 300px;
+    display: block;
+    margin: 25px 0;
+  }
+
+  .form-title {
+    color: $purple;
+    text-align: center;
+  }
+
+  button {
+    display: flex;
+    margin: auto;
+  }
+
+  .form-redirection {
+    position: absolute;
+    right: 50px;
+    bottom: 25px;
+    left: auto;
+    color: $purple;
+    height: 18px;
+    padding-bottom: 9px;
+  }
+}
+
+.wrapper-100 {
+  width: 100%;
+  height: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.user-items-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .user-item {
+    width: 100%;
+  }
+}
+
+.user-item {
+  margin: 10px;
+  padding: 0 !important;
+
+  .user-item-content-wrapper {
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .username {
+    margin-left: 25px;
+    margin-right: auto;
+    font-size: 24px;
+    color: $purple;
+    font-weight: 600;
+  }
+
+  button {
+    margin-left: 10px;
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  background-color: $purple;
+  color: #ffffff;
+  font-weight: 900;
+  border-radius: 50%;
+  border: 1px solid purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-drawer {
+  border: none !important;
+}
+
+.drawer {
+  background-color: $darkPurple;
+  height: 100%;
+  overflow: hidden;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}
+
+.white-stroked {
+  color: #ffffff;
+  border-color: white !important;
+  width: calc(100% - 20px);
+  margin: 10px !important;
+}
+
+.message-input {
+  .mat-form-field-wrapper {
+    margin-bottom: -1.35em !important;
+    background-color: $bg;
+    color: $darkPurple;
+  }
+
+  .mat-form-field-label, {
+    color: #8b8da9;
+  }
+
+  .mat-form-field-flex {
+    padding-left: 40px !important;
+  }
+}
+
+

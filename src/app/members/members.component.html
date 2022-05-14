@@ -1,0 +1,64 @@
+<mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+  <mat-tab label="Members">
+    <div class="user-items-wrapper">
+      <mat-card *ngFor="let userAccount of members" class="user-item">
+        <div class="user-item-content-wrapper">
+          <div class="avatar">
+            <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+              <style>
+                .heavy { font: bold 30px sans-serif; }
+              </style>
+              <text x="0" y="35" class="heavy">{{ userAccount.user.userName.charAt(0).toUpperCase() }}</text>
+            </svg>
+          </div>
+          <span class="username">{{ userAccount.user.userName }}</span>
+          <div class="actions">
+            <button *ngIf="!userAccount.isAdmin" mat-raised-button color="primary" (click)="SetAdmin(userAccount.id)">Set admin</button>
+            <button mat-raised-button color="accent" (click)="KickUser(userAccount.id)">Kick</button>
+            <button *ngIf="!userAccount.isBanned && !userAccount.isAdmin" mat-raised-button color="warn" (click)="BanUser(userAccount.id)">Mute</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Admins">
+    <div class="user-items-wrapper">
+      <mat-card *ngFor="let userAccount of admins" class="user-item">
+        <div class="user-item-content-wrapper">
+          <div class="avatar">
+            <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+              <style>
+                .heavy { font: bold 30px sans-serif; }
+              </style>
+              <text x="0" y="35" class="heavy">{{ userAccount.user.userName.charAt(0).toUpperCase() }}</text>
+            </svg>
+          </div>
+          <span class="username">{{ userAccount.user.userName }}</span>
+          <div class="actions">
+            <button *ngIf="userAccount.user.id !== userId" mat-raised-button color="accent" (click)="UnsetAdmin(userAccount.id)">Unset admin</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Muted users">
+    <div class="user-items-wrapper">
+      <mat-card *ngFor="let userAccount of bannedUsers" class="user-item">
+        <div class="user-item-content-wrapper">
+          <div class="avatar">
+            <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+              <style>
+                .heavy { font: bold 30px sans-serif; }
+              </style>
+              <text x="0" y="35" class="heavy">{{ userAccount.user.userName.charAt(0).toUpperCase() }}</text>
+            </svg>
+          </div>
+          <span class="username">{{ userAccount.user.userName }}</span>
+          <div class="actions">
+            <button mat-raised-button color="primary" (click)="UnbanUser(userAccount.id)">Unmute</button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </mat-tab>
+</mat-tab-group>

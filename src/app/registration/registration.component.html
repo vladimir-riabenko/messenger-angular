@@ -1,0 +1,29 @@
+<div class="wrapper-100 d-flex">
+  <div class="reg-form-wrapper">
+    <form>
+      <h1 class="form-title">Registration</h1>
+
+      <mat-form-field hintLabel="Max 25 characters" appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput #input maxlength="25" [formControl]="username" placeholder="Username" required>
+        <mat-hint align="end">{{input.value?.length || 0}}/25</mat-hint>
+        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" hintLabel="Min 8 characters">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="Register()">Sign Up</button>
+      <a routerLink="/login" routerLinkActive="active" class="form-redirection">Sign In</a>
+    </form>
+  </div>
+</div>

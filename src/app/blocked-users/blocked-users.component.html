@@ -1,0 +1,18 @@
+<div class="user-items-wrapper">
+  <mat-card *ngFor="let user of blockedUsersList" class="user-item">
+    <div class="user-item-content-wrapper">
+      <div class="avatar">
+        <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+          <style>
+            .heavy { font: bold 30px sans-serif; }
+          </style>
+          <text x="0" y="35" class="heavy">{{ user.userName.charAt(0).toUpperCase() }}</text>
+        </svg>
+      </div>
+      <span class="username">{{ user.userName }}</span>
+      <div class="actions">
+        <button mat-raised-button color="primary" (click)="UnblockUser(user.id)">Unblock user</button>
+      </div>
+    </div>
+  </mat-card>
+</div>

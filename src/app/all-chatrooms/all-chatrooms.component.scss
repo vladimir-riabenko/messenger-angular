@@ -1,0 +1,44 @@
+$bg : #decbfd;
+$purple : #673ab7;
+$darkPurple : #3a1f68;
+
+h2 {
+  color: $bg;
+  margin-bottom: 0;
+  margin-left: 10px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  height: 55px;
+}
+
+.mat-list-option, .mat-list-item-content {
+  height: 80px !important;
+}
+
+.mat-list-option {
+  border-top: 1px solid $bg;
+  &:last-child {
+    border-bottom: 1px solid $bg;
+  }
+}
+
+.avatar {
+  margin-right: 20px;
+}
+
+.topic {
+  font-size: 18px;
+  color: $bg;
+  margin: 0;
+}
+
+.members {
+  font-size: 12px;
+  color: #8b8da9;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -1,0 +1,14 @@
+<div class="settings-wrapper">
+  <a (click)="closeDialog()" class="close"><mat-icon>close</mat-icon></a>
+  <div class="reg-form-wrapper">
+    <h1>Edit chatroom</h1>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Topic</mat-label>
+        <input matInput #input maxlength="25" [formControl]="topic" placeholder="Topic" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="EditChatroom()">Save changes</button>
+      <a class="form-redirection" (click)="DeleteChatroom(data.id)" style="color: red">Delete chat</a>
+    </form>
+  </div>
+</div>

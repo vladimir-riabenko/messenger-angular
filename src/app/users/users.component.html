@@ -1,0 +1,38 @@
+<mat-tab-group mat-align-tabs="center" backgroundColor="primary">
+  <mat-tab label="Friends">
+    <app-friends #friends></app-friends>
+  </mat-tab>
+  <mat-tab label="Blocked users">
+    <app-blocked-users #blockedUsers></app-blocked-users>
+  </mat-tab>
+  <mat-tab label="Find user">
+    <div class="search-input-wrapper">
+      <form>
+        <mat-form-field class="search-form-field" appearance="fill">
+          <mat-label>Enter username</mat-label>
+          <input matInput type="text" name="search" [(ngModel)]="searchInputValue">
+          <button *ngIf="searchInputValue" matSuffix mat-icon-button aria-label="Search" type="submit" (click)="GetUserByUserName(searchInputValue)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+    </div>
+    <mat-card *ngIf="searchResult" class="user-item">
+      <div class="user-item-content-wrapper">
+        <div class="avatar">
+          <svg viewBox="-15 0 50 50" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+            <style>
+              .heavy { font: bold 30px sans-serif; }
+            </style>
+            <text x="0" y="35" class="heavy">{{ searchResult.userName.charAt(0).toUpperCase() }}</text>
+          </svg>
+        </div>
+        <span class="username">{{ searchResult.userName }}</span>
+        <div class="actions">
+          <button mat-raised-button color="primary" (click)="AddFriend(searchResult.id)">Add friend</button>
+          <button mat-raised-button color="warn" (click)="BlockUser(searchResult.id)">Block user</button>
+        </div>
+      </div>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

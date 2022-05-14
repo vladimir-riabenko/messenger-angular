@@ -1,0 +1,54 @@
+<div *ngIf="currentChatroom" class="current-chat-wrapper">
+  <div class="current-chat-info">
+    <div class="chat-info">
+      <p class="topic">{{currentChatroom.topic}}</p>
+      <span class="members">{{ currentChatroom.users.$values.length == 1 ? '1 member' : currentChatroom.users.$values.length + ' members' }}</span>
+    </div>
+    <div class="chat-actions">
+      <button mat-raised-button color="primary" (click)="OpenDialogFriends()">Add user</button>
+      <a (click)="OpenDialogMembers()"><mat-icon>group</mat-icon></a>
+      <a><mat-icon (click)="OpenDialogEdit()">edit</mat-icon></a>
+      <a><mat-icon (click)="LeaveFromChatroom(currentChatroom.id)">exit_to_app</mat-icon></a>
+    </div>
+  </div>
+  <div class="messages-wrapper">
+    <div class="messages-list">
+      <div *ngFor="let message of messagesList" class="message" (click)="OpenDialogEditMessage(message)"
+           [ngClass]="
+           {
+           'message-me': isMine(message),
+           'message-them': !isMine(message)
+           }"
+      >
+        <p class="from">{{GetTheSender(message)}}</p>
+        <div *ngIf="message.images.$values.length > 0" class="images">
+          <div *ngFor="let image of message.images.$values" class="image-item">
+            <img src="{{messagesUrlStart + image.path}}" alt="">
+          </div>
+        </div>
+        <p>{{message.text}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="send-message-form">
+    <ul *ngIf="files && files.length > 0" class="attachment-list">
+      <li *ngFor="let file of files">{{file.name}}</li>
+    </ul>
+    <form autocomplete="off">
+      <label class="attachment">
+        <input type="file" name="files" style="display: none;" multiple (change)="onFileSelected($event)" #attachmentInput>
+        <mat-icon *ngIf="!files || files.length == 0">attachment</mat-icon>
+        <button matSuffix mat-icon-button aria-label="Remove attachment" type="button" *ngIf="files && files.length > 0" (click)="resetFileInput($event)" >
+          <mat-icon>close</mat-icon>
+        </button>
+      </label>
+      <mat-form-field [style.fontSize]="16" appearance="fill" class="message-input">
+        <mat-label>Send a message...</mat-label>
+        <input name="Message" matInput [(ngModel)]="messageText">
+        <button matSuffix mat-icon-button aria-label="Send" type="submit" (click)="SendMessage(messageText)">
+          <mat-icon>send</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+</div>

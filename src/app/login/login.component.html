@@ -1,0 +1,23 @@
+<div class="wrapper-100 d-flex">
+  <div class="reg-form-wrapper">
+    <form>
+      <h1 class="form-title">Sign In</h1>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matInput [formControl]="username" placeholder="Username" required>
+        <mat-error *ngIf="username.invalid">{{getUsernameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" (click)="Login()">Sign In</button>
+      <a routerLink="/registration" routerLinkActive="active" class="form-redirection">Sign Up</a>
+    </form>
+  </div>
+</div>
